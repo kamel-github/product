@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- payslip View -->
+    <record id="hr_payslip_view_form1" model="ir.ui.view">
+        <field name="name">hr.payslip.view.form</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='contract_id']" position="after">
+<!--                <label for="month_date_from"/>-->
+<!--                <div class="o_row" name="Periode de paie">-->
+<!--                    <field name="month_date_from"/>-->
+<!--                    <field name="year_date_from"/>-->
+<!--                </div>-->
+                <label for="month_date_to"/>
+                <div class="o_row" name="Mois de paie">
+                    <field name="month_date_to"/>
+                    <field name="year_date_to"/>
+                </div>
+
+                <field name="working_days" />
+                <field name="jour_de_repos_1"/>
+                <field name="jour_de_repos_2"/>
+                <field name="sum_worked_hours"/>
+            </xpath>
+<!--            <xpath expr="//sheet/notebook/page[@name='salary_computation']/field[@name='line_ids']/tree/field[@name='amount']" position="before">-->
+<!--&lt;!&ndash;                <field name="taux" readonly="1" force_save="1"/>&ndash;&gt;-->
+<!--                <field name = "taux">base</field>-->
+
+<!--            </xpath>-->
+
+        </field>
+    </record>
+</odoo>

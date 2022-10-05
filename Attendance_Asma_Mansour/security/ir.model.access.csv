@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Attendance_Asma_Mansour.access_extra_hours,access_extra_hours,Attendance_Asma_Mansour.model_extra_hours,base.group_user,1,1,1,1
+

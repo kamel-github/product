@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- payslip View -->
+    <record id="attendances_view_form" model="ir.ui.view">
+        <field name="name">hr.attendance.tree</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='worked_hours']" position="after">
+                <field name="moved" readonly="1" invisible="0"/>
+                <field name="check_in_m" invisible="0"/>
+                <field name="check_out_m" invisible="0"/>
+                <field name="soumis_aux_heures_sup_as"/>
+                <field name="early_check_in" widget="float_time" sum="total_early_check_in" invisible="0"/>
+                <field name="late_check_out" widget="float_time" sum="total_late_check_out" invisible="0"/>
+                <field name="extra_hours" widget="float_time"/>
+                <field name="hours_start" invisible="1"/>
+                <field name="hours_end" invisible="1"/>
+                <field name="resource_calendar_id" invisible="1"/>
+<!--                <header>-->
+                <button name="%(Attendance_Asma_Mansour.hr_attendance_action_extra_hours_wizard)d" string="Validation Extra Hours"
+                        context="{'employee_id':employee_id}" class="fa fa-check oe_highlight" attrs="{'invisible': [('soumis_aux_heures_sup_as', '=', False)]}"
+                        type="action" />
+<!--                </header>-->
+<!--                 class="oe_highlight"-->
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

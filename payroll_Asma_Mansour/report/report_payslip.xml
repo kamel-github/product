@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="report_payslip_inherit" inherit_id="hr_payroll.report_payslip">
+<!--            <div class="test">-->
+<!--                <span t-field="o.employee_id.company_id.street"/>-->
+<!--            </div>-->
+<!--            <xpath expr="//div/h2/t[1]" position ="replace">-->
+
+<!--            </xpath>-->
+            <xpath expr="//div" position ="replace">
+<!--                <tr></tr>-->
+                Affiliation CNSS:<span t-field="o.employee_id.company_id.affiliation_CNSS"/>
+                <h2 align="left">BULLETIN DE PAIE</h2>
+<!--                <t t-set="is_invalid" t-value="o._is_invalid()"/>-->
+<!--                <t t-if="is_invalid">-->
+<!--                    <strong><t t-esc="is_invalid"/></strong>-->
+<!--                </t>-->
+                <table name="employee-infos" class="table table-sm table-bordered">
+                    <tr>
+                            <td>
+
+                                <strong>Name: </strong>
+                                <span t-field="o.employee_id"/>
+
+                            </td>
+                            <td>
+                                <strong>Qualification: </strong>
+                                <span t-field="o.employee_id.job_id"/>
+                            </td>
+                            <td>
+                                <strong>Mois de Paie: </strong>
+                                <span t-field="o.month_date_to"/>
+                                <span t-field="o.year_date_to"/>
+                            </td>
+                            <td rowspan="5">
+                                <strong>Addresse de l'employé: </strong>
+                                <div t-field="o.employee_id.address_home_id"
+                                     t-options='{"widget": "contact", "fields": ["address", "phone"], "no_marker": True, "phone_icons": True}'/>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Matricule: </strong>
+                            <span t-field="o.employee_id.registration_number"/>
+                        </td>
+                        <td>
+                            <strong>Situation familiale: </strong>
+                            <span t-field="o.employee_id.marital"/>
+
+                        </td>
+                        <td>
+                            <strong>Catégorie: </strong>
+                            <span t-field="o.employee_id.categorie"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Numéro CNSS: </strong>
+                            <span t-field="o.employee_id.matricule_cnss"/>
+                        </td>
+                        <td>
+                            <strong>Enfant à charge: </strong>
+                            <span t-field="o.employee_id.children"/>
+                        </td>
+                        <td>
+                            <strong>Echelon: </strong>
+                            <span t-field="o.employee_id.echlon"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>CIN: </strong>
+                            <span t-field="o.employee_id.identification_id"/>
+
+                        </td>
+                        <td>
+                            <strong>Paiement: </strong>
+                            <span t-field="o.employee_id.paiement"/>
+
+                        </td>
+                        <td>
+                            <strong>Salaire de base: </strong>
+                            <span t-field="o.employee_id.contract_id.wage"/>
+                        </td>
+                        <tr>
+                            <td>
+                                <strong>Type de contract: </strong>
+                                <span t-field="o.employee_id.contract_id.contract_type_id"/>
+                            </td>
+                            <td>
+                                <strong>Les Jours Ouvrables: </strong>
+                                <span t-field="o.working_days"/>
+                            </td>
+                            <td>
+                                <strong>Solde de congés: </strong>
+<!--                                <span t-field="o.employee_id.allocation_used_display"/>/<span t-field="o.employee_id.allocation_display"/>-->
+                                <span t-field="o.employee_id.leave_balance"/>
+                            </td>
+                        </tr>
+                    </tr>
+                </table>
+
+<!--            <xpath expr="//div[2]" position ="replace">-->
+                <table class="table table-sm table-bordered" style="border:1px solid black">
+                    <thead class="o_black_border">
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Designation</th>
+                                    <th>Taux</th>
+                                    <th>Rémunération</th>
+                                    <th>Retenue</th>
+                                </tr>
+                    </thead>
+                    <tbody>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip )" t-as="line">
+
+                                    <td>
+                                        <span t-field="line.code"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.name"/>
+                                    </td>
+                                    <td>
+                                                 <span t-if="line.salary_rule_id.nombre_des_heures == True"
+                                                         t-esc="line.amount"
+                                                  t-options='{"widget": "integer"}'/>
+                                    </td>
+                                    <td>
+                                            <span t-if="line.salary_rule_id.remuneration == True"
+                                                    t-esc="line.total"
+                                              t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </td>
+                                    <td>
+                                            <span t-if="line.salary_rule_id.retenues == True"
+                                                    t-esc="line.total"
+                                              t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                </table>
+            </xpath>
+<!--            <xpath expr="//div/table[3]" position ="replace">-->
+<!--                <p class="text-center">Made by Odoo with ❤️</p>-->
+<!--            </xpath>-->
+        </template>
+</odoo>

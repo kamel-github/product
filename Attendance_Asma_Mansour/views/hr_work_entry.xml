@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- payslip View -->
+    <record id="hr_work_entry_view_form_modified" model="ir.ui.view">
+        <field name="name">hr.work.entry.form</field>
+        <field name="model">hr.work.entry</field>
+        <field name="inherit_id" ref="hr_work_entry.hr_work_entry_view_form"/>
+        <field name="arch" type="xml">
+
+<!--            <form string="Work Entry" >-->
+                <field name="state" position="replace">
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}" statusbar_visible="draft,validated_attendances,validated,conflict"/>
+
+                </field>
+
+
+<!--            </form>-->
+<!--            <xpath expr="//tree//field[@name='check_out']" position="after">-->
+
+<!--                <field name="check_in_m"/>-->
+<!--                <field name="check_out_m"/>-->
+<!--                <field name="worked_hours_m"/>-->
+<!--                <field name="soumis_aux_heures_sup_as"/>-->
+<!--            </xpath>-->
+
+        </field>
+    </record>
+</odoo>

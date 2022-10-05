@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="hr_work_entry_type_view_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.work.type.view.tree.inherit</field>
+        <field name="model">hr.work.entry.type</field>
+        <field name="inherit_id" ref="hr_work_entry.hr_work_entry_type_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[1]" position="before">
+                <field name="sequence" widget="handle"/>
+            </xpath>
+        </field>
+    </record>
+
+    <menuitem id="hr_work_entry_type_menu"
+        name="Work Entry Types"
+        parent="hr_attendance.menu_hr_attendance_root"
+        sequence="90"
+        action="hr_work_entry.hr_work_entry_type_action"/>
+
+</odoo>

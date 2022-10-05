@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="work_entry_type_pointage" model="hr.work.entry.type">
+            <field name="name">Pointages</field>
+            <field name="color">10</field>
+            <field name="code">WORK122</field>
+        </record>
+
+        <record id="attendances_time_off_data" model="hr.leave.type">
+            <field name="name">Attendances</field>
+            <field name="work_entry_type_id" ref="work_entry_type_pointage" />
+            <field name="requires_allocation">no</field>
+            <field name="leave_validation_type">no_validation</field>
+            <field name="request_unit">hour</field>
+            <field name="time_type">leave</field>
+            <field name="icon_id" ref="hr_holidays.icon_12"/>
+            <field name="color">10</field>
+        </record>
+
+<!--            <field name="allocation_validation_type">officer</field>-->
+<!--            <field name="unpaid" eval="False"/>-->
+<!--            <field name="leave_notif_subtype_id" ref="mt_leave_unpaid"/>-->
+<!--            <field name="responsible_id" ref="base.user_admin"/>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Employee View -->
+    <record id="hr_employee_view_form" model="ir.ui.view">
+        <field name="name">hr.employee.view.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lang']" position="after">
+                <field name="paiement"/>
+            </xpath>
+             <xpath expr="//field[@name='identification_id']" position="attributes">
+                        <attribute name="string">CIN</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='identification_id']" position="after">
+                <field name="matricule_cnss"/>
+<!--                <field name="num_chezemployeur"/>-->
+            </xpath>
+
+            <xpath expr="//field[@name='birthday']" position="after">
+                <field name="age"/>
+            </xpath>
+            <xpath expr="//field[@name='children']" position="before">
+                <field name="chef_de_famille"/>
+            </xpath>
+<!--            <xpath expr="//field[@name='first_contract_date']" position="after">-->
+<!--                <field name="seniority_year"/>-->
+<!--                <field name="seniority_month"/>-->
+<!--            </xpath>-->
+            <xpath expr="//field[@name='job_id']" position="after">
+<!--                <field name="paiement"/>-->
+                <label for="seniority_year"/>
+                <div class="o_row" name="seniority">
+                    <field name="seniority_year"/>
+                        <span>Années</span>
+                    <field name="seniority_month"/>
+                        <span>Mois</span>
+                    <field name="seniority_days"/>
+                        <span>Jours</span>
+
+                </div>
+                <field name="categorie"/>
+                <field name="echlon"/>
+                <field name="echelle"/>
+                <field name="salaire_de_base"/>
+                <field name="soumis_aux_heures_sup"/>
+                <field name="soumis_aux_retenues"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

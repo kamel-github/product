@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="hr_contract_view_form" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.payroll</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_id']" position="before">
+
+                <field name="jour_de_repos_1"/>
+                <field name="jour_de_repos_2"/>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='information']/group[@name='salary_info']/group[@name='salary']" position="after">
+                <group name="salaire_de_base_info">
+                    <label for="salaire_de_base"/>
+                    <div class="o_row" name="salaire_de_base">
+                            <field name="salaire_de_base" nolabel="1" />
+                            <span>/ month</span>
+                    </div>
+                </group>
+            </xpath>
+
+            <xpath expr="//notebook/page[@name='information']/group[@name='salary_info']/group[@name='salary']" position="inside">
+                <label for="prime"/>
+                <div class="o_row" name="prime">
+                    <field name="prime" nolabel="1"/>
+                    <span>/ month</span>
+                </div>
+                <label for="net"/>
+                <div class="o_row" name="net">
+                    <field name="net" nolabel="1"/>
+                    <span>/ month</span>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

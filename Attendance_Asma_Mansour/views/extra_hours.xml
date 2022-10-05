@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+        <!-- actions -->
+    <record id="hr_attendance_action_extra_hours" model="ir.actions.act_window">
+		<field name="name">Extra Hours</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">extra.hours</field>
+		<field name="view_mode">tree,form,gantt</field>
+        <field name="context">{'create': False}</field>
+		<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create new record</p>
+		</field>
+
+	</record>
+        <!-- Menus -->
+    <menuitem id="menu_hr_attendance_view_extra_hours"
+              name="Extra Hours"
+              parent="hr_attendance.menu_hr_attendance_root"
+              sequence="10"
+              action="Attendance_Asma_Mansour.hr_attendance_action_extra_hours"/>
+        <!-- views -->
+
+    <record id="view_extra_hours_tree" model="ir.ui.view">
+        <field name="name">extra.hours.tree</field>
+        <field name="model">extra.hours</field>
+        <field name="arch" type="xml">
+            <tree string="Extra Hours" edit="0" sample="1">
+                <field name="employee_id"/>
+                <field name="hours_start"/>
+                <field name="hours_end"/>
+                <field name="extra_hours" widget="float_time"/>
+                <field name="payslip_id" domain="[('employee_id', '=', employee_id)]"/>
+                <field name="work_type_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--gant view-->
+    <record id="extra_hours_gantt" model="ir.ui.view">
+            <field name="name">extra.hours.gantt.view</field>
+            <field name="model">extra.hours</field>
+            <field name="arch" type="xml">
+                    <gantt string="Extra Hours"
+                           color="work_type_id"
+                           date_start="hours_start"
+                           date_stop="hours_end"
+                           default_group_by="employee_id">
+                            <field name="employee_id"/>
+                    </gantt>
+            </field>
+    </record>
+<!--    <record id="hr_attendance_action_extra_hours" model="ir.actions.act_window">-->
+<!--            <field name="view_mode">tree,form,gantt</field>-->
+<!--    </record>-->
+
+</odoo>

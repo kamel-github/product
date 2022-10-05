@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <!-- Wizard View -->
+
+    <record id="wizard_extra_hours" model="ir.ui.view">
+        <field name="name">extra.hours.wizard.form</field>
+        <field name="model">extra.hours</field>
+        <field name="arch" type="xml">
+            <form string="Extra Hours" edit="0" sample="1">
+                <group>
+                    <field name="employee_id" context="{'employee_id':employee_id}"/>
+                </group>
+
+                    <row>
+                        <group>
+                            <field name="hours_start"/>
+                            <field name="hours_end"/>
+                        </group>
+                    </row>
+
+                <group>
+                    <field name="extra_hours" widget="float_time"/>
+                    <field name="work_type_id" default="Attendance_Asma_Mansour.hr_work_entry.work_input_attendance"/>
+                </group>
+                <field name="payslip_id" invisible="1"/>
+<!--                default="hr_work_entry.work_input_attendance"-->
+            </form>
+        </field>
+    </record>
+        <!-- actions -->
+    <record id="hr_attendance_action_extra_hours_wizard" model="ir.actions.act_window">
+		<field name="name">Extra Hours</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">extra.hours</field>
+		<field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_extra_hours"/>
+        <field name="target">new</field>
+
+
+
+	</record>
+
+
+
+<!--    <menuitem id="menu_hr_attendance_wizard_extra_hours"-->
+<!--              name="Extra Hours Wizard"-->
+<!--              parent="hr_attendance.menu_hr_attendance_root"-->
+<!--              sequence="10"-->
+<!--              action="hr_attendance_action_extra_hours_wizard"/>-->
+<!--    .menu_hr_attendance_view_attendances-->
+    <!-- views -->
+
+
+
+
+
+
+</odoo>

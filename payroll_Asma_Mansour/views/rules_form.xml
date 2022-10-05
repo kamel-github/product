@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- payslip View -->
+    <record id="rules_view_form" model="ir.ui.view">
+        <field name="name">hr.salary.rule.form</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='sequence']" position="after">
+
+                <field name="nombre_des_heures"/>
+                <field name="retenues"/>
+                <field name="remuneration"/>
+
+
+            </xpath>
+            <xpath expr="//notebook/page[@name='general']/group[@name='general_conditions']/group[3]/field [@name='amount_select']" position="before">
+                <field name="amount_base"/>
+                <field name="base"/>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
